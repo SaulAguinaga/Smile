@@ -28,8 +28,8 @@ public class PatientService {
         return repository.findAll();
     }
 
-    // public Patient getOne(String dni) {
-    //     return repository.findOne(Patient.getDni().equals(dni))
-    // }
+    public Patient getOne(String dni) {
+        return repository.findByDni(dni);
+    }
     
 }

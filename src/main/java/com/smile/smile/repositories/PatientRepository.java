@@ -6,4 +6,5 @@ import com.smile.smile.models.Patient;
 
 public interface PatientRepository extends JpaRepository<Patient, Long> {
 
+    public Patient findByDni(String dni);
 }
