@@ -27,8 +27,8 @@ public class PatientController {
         public List<Patient> getAll() {
             return service.getAll();
     }
-    // @GetMapping(path = "/{dni}")
-    // public Patient getOne(@PathVariable String dni){
-    //     return service.getOne(dni);
-    // }
+    @GetMapping(path = "/{dni}")
+    public Patient getOne(@PathVariable String dni){
+        return service.getOne(dni);
+    }
 }
