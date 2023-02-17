@@ -14,12 +14,15 @@ public class Treatment {
     private Long id;
     @Column(nullable = false)
     private String description;
+    
     public Treatment() {
     }
+
     public Treatment(Long id, String description) {
         this.id = id;
         this.description = description;
     }
+    
     public Long getId() {
         return id;
     }

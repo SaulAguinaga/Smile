@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import com.smile.smile.models.Patient;
+import com.smile.smile.payloads.PatientPayloads;
 import com.smile.smile.repositories.PatientRepository;
 import com.smile.smile.repositories.ProfileRepository;
 import com.smile.smile.repositories.TreatmentRepository;
@@ -30,6 +31,11 @@ public class PatientService {
 
     public Patient getOne(String dni) {
         return repository.findByDni(dni);
+    }
+
+    public void save(PatientPayloads patient) {
+        Patient patientToAdd = new Patient(patient.getDni(), null, null);
+        repository.save(patientToAdd);
     }
     
 }

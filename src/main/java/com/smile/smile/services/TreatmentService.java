@@ -23,5 +23,8 @@ public class TreatmentService {
     public Treatment getOne(Long id) {
         return repository.findById(id).get();
     }
+    public void save(){
+        
+    }
     
 }
