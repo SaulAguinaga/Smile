@@ -36,6 +36,9 @@ public class TreatmentController {
     public void save(@RequestBody TreatmentPayload treatment){
         service.save(treatment);
     }
-    
+    @DeleteMapping("/{id}")
+    public List<Treatment> delete(@PathVariable Long id){
+        return service.delete(id);
+    }
     
 }

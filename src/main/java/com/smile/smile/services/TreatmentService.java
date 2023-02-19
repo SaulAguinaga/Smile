@@ -28,5 +28,10 @@ public class TreatmentService {
         Treatment treatmentToAdd = new Treatment(null, null);
         repository.save(treatmentToAdd);    
     }
+    public List<Treatment> delete(Long id){
+        repository.deleteById(id);
+        return repository.findAll();
+    }
+
     
 }
