@@ -13,16 +13,10 @@ import com.smile.smile.repositories.TreatmentRepository;
 @Service
 public class PatientService {
     private PatientRepository repository;
-    private ProfileRepository profileRepository;
-    private TreatmentRepository treatmentRepository;
-
-    
 
     public PatientService(PatientRepository repository, ProfileRepository profileRepository,
             TreatmentRepository treatmentRepository) {
         this.repository = repository;
-        this.profileRepository = profileRepository;
-        this.treatmentRepository = treatmentRepository;
     }
 
     public List<Patient> getAll() {

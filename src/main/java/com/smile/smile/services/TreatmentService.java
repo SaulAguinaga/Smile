@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import com.smile.smile.models.Treatment;
+import com.smile.smile.payloads.TreatmentPayload;
 import com.smile.smile.repositories.TreatmentRepository;
 
 @Service
@@ -23,8 +24,9 @@ public class TreatmentService {
     public Treatment getOne(Long id) {
         return repository.findById(id).get();
     }
-    public void save(){
-        
+    public void save(TreatmentPayload treatment){
+        Treatment treatmentToAdd = new Treatment(null, null);
+        repository.save(treatmentToAdd);    
     }
     
 }
