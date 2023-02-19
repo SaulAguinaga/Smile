@@ -31,5 +31,9 @@ public class PatientService {
         Patient patientToAdd = new Patient(patient.getDni(), null, null);
         repository.save(patientToAdd);
     }
+    public List<Patient> delete(String dni){
+        repository.deleteByDni(dni);
+        return repository.findAll();
+    }
     
 }

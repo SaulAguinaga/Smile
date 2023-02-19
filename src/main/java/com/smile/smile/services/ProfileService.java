@@ -29,5 +29,9 @@ public class ProfileService {
         Profile profileToAdd = new Profile(null, profile.getFirstName(), profile.getLastNames(), profile.getAge(), profile.getTelephoneNumber(), profile.getDirection(), profile.getCity());
         repository.save(profileToAdd);
     }
+    public List<Profile> delete(Long id){
+        repository.deleteById(id);
+        return repository.findAll();
+    }
 }
 
