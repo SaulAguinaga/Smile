@@ -2,10 +2,14 @@ package com.smile.smile.controllers;
 
 import java.util.List;
 
+import org.springframework.data.repository.config.RepositoryNameSpaceHandler;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -35,8 +39,22 @@ public class ProfileController {
     public void save(@RequestBody ProfilePayloads profile){
         service.save(profile);
     }
-    @DeleteMapping("/{id}")
+    @DeleteMapping(path = "/{id}")
     public List<Profile> delete(@PathVariable Long id){
         return service.delete(id);
+    }
+    @PutMapping(path = "/{id}")
+    public ResponseEntity<Object> update(@PathVariable Long id, @RequestBody ProfilePayloads profile){
+        Profile profileTemporal = service.getOne(id);
+        try {
+            if (profileTemporal != null) {
+                profile.setId(id);
+                service.save(profile);
+                return new ResponseEntity<>(HttpStatus.OK);
+            }
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
     }
 }

@@ -24,14 +24,16 @@ public class TreatmentService {
     public Treatment getOne(Long id) {
         return repository.findById(id).get();
     }
-    public void save(TreatmentPayload treatment){
-        Treatment treatmentToAdd = new Treatment(null, null);
-        repository.save(treatmentToAdd);    
-    }
     public List<Treatment> delete(Long id){
         repository.deleteById(id);
         return repository.findAll();
     }
-
+    public void save(TreatmentPayload treatment){
+        Treatment treatmentToAdd = new Treatment(null, treatment.getDescription());
+        if (treatment.getId()!=null) {
+            treatmentToAdd.setId(treatment.getId());
+        }
+        repository.save(treatmentToAdd);    
+    }
     
 }
